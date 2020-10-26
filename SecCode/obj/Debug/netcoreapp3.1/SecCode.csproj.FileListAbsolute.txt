@@ -1,0 +1,13 @@
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.exe
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.deps.json
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.runtimeconfig.json
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.runtimeconfig.dev.json
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.dll
+F:\csprojs\SecCode\bin\Debug\netcoreapp3.1\SecCode.pdb
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.csprojAssemblyReference.cache
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.AssemblyInfoInputs.cache
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.AssemblyInfo.cs
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.csproj.CoreCompileInputs.cache
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.dll
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.pdb
+F:\csprojs\SecCode\obj\Debug\netcoreapp3.1\SecCode.genruntimeconfig.cache

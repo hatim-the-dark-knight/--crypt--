@@ -55,8 +55,8 @@ namespace SecCode
                 GameMachineDisplay(x, level);
                 if(Console.ForegroundColor == ConsoleColor.DarkYellow)
                     break;
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine("\n You have " + (i - 1) + " attempt(s) remaining");
                 i--;
                 if(i == 0)
@@ -68,8 +68,8 @@ namespace SecCode
 
             PrintCode();
             
+            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.BackgroundColor = ConsoleColor.Black;
             Console.Write("\n Do you want to play once more (yes(y)/no(n)) ? ");
             string again = Console.ReadLine();
             again = again.ToLower();

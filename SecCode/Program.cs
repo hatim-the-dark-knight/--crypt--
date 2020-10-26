@@ -8,6 +8,7 @@ namespace SecCode
     {
         static void Main(string[] args)
         {
+            Console.Clear();
             Console.Title = "Crypt Game Bot";
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -42,6 +43,7 @@ namespace SecCode
                 Console.BackgroundColor = ConsoleColor.Blue;
                 foreach(int digit in code)
                     Console.Write(digit);
+                Console.ResetColor();
                 Console.Write("\n\n");
             }
 
@@ -61,6 +63,7 @@ namespace SecCode
                 i--;
                 if(i == 0)
                 {
+                    Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine(" Oops!.. GAME OVER!");
                 }
@@ -275,8 +278,8 @@ namespace SecCode
             void Won()
             {
                 Console.Write(" ");
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write("\n Yeyy!.. You Won!\n CODE DECRYPTED!\n");
             }
         }

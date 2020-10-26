@@ -62,7 +62,7 @@ namespace SecCode
                 if(i == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine(" Oops!.. You Failed");
+                    Console.WriteLine(" Oops!.. GAME OVER!");
                 }
             }while(i > 0);
 
@@ -277,7 +277,7 @@ namespace SecCode
                 Console.Write(" ");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.Write("\n Yeyy!.. You Won!\n");
+                Console.Write("\n Yeyy!.. You Won!\n CODE DECRYPTED!\n");
             }
         }
 

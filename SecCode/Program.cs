@@ -92,7 +92,7 @@ namespace SecCode
 
         static void Title()
         {
-            Console.SetWindowSize(126, 30);
+            //Console.SetWindowSize(126, 30);
 
             string title;
             title = "CRYPT!";
@@ -150,7 +150,7 @@ namespace SecCode
         
         static List<int> PlayerInput(int lvl)
         {
-            char[] digit = new char[10] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            char[] dig = new char[10] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
             input:
             Console.Write("\n Enter the " + lvl + " digit code: ");
@@ -159,7 +159,7 @@ namespace SecCode
             for(int i = 0; i < input.Length; i++)
             {
                 k = 0;
-                foreach(char x in digit)
+                foreach(char x in dig)
                 {
                     if(input[i] == x)
                         k++;

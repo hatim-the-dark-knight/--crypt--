@@ -11,41 +11,40 @@ namespace SecCode
             Console.Clear();
             Console.Title = "Crypt Game Bot";
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Title();
             AllAbout();
 
             Console.ReadKey();
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Title();
+
+            Console.WriteLine("\n\n THE GAME starts...");
 
             again:
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n\n THE GAME starts...");
             Console.Write("\n Enter the level (1 / 2 / 3) : ");
 
             int level, i;
-            level = Convert.ToInt32(Console.ReadLine());
-            level+=3;
+            string lev = Console.ReadLine();
+            if(lev.Equals("1") || lev.Equals("2") || lev.Equals("3"))
+            {
+                level = Convert.ToInt32(lev);
+                level+=3;
+            }
+            else
+            {
+                Console.WriteLine(" Be aware of your inputs! ;P");
+                goto again;
+            }
+            
             var code = new List<int>();
             var input = new List<int>();
             int[] x = new int[2];
 
             code = CodeGenerator(level);
             Console.WriteLine(" Code Generated !");
-            
-            void PrintCode()
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("\n The Secret Code is ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.BackgroundColor = ConsoleColor.Blue;
-                foreach(int digit in code)
-                    Console.Write(digit);
-                Console.ResetColor();
-                Console.Write("\n\n");
-            }
 
             Console.WriteLine(" Now, Guess the Code!");
             i = 8;
@@ -69,7 +68,7 @@ namespace SecCode
                 }
             }while(i > 0);
 
-            PrintCode();
+            PrintCode(code);
             
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -79,7 +78,7 @@ namespace SecCode
             if(again == "yes" || again == "y")
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Title();
                 goto again;
             }
@@ -99,8 +98,8 @@ namespace SecCode
             title = "CRYPT!";
             Console.SetCursorPosition(Console.WindowWidth/2 - title.Length/2, 1);
             Console.WriteLine(title);
-            Console.SetCursorPosition(Console.WindowWidth/2 - 55, 3);
-            Console.WriteLine("______________________________________________________________________________________________________________");
+            Console.SetCursorPosition(Console.WindowWidth/2 - 35, 3);
+            Console.WriteLine("______________________________________________________________________");
         }
 
         static void AllAbout()
@@ -108,7 +107,7 @@ namespace SecCode
             Console.WriteLine("\n About CRYPT! : ");
             Console.WriteLine(" A logical game where the player has to crack the code that is generated, by guessing the code digit by digit as per the output of the Game-Machine, for each attempt.");
             Console.WriteLine(" Attempts are limited for each of the three levels of the game.");
-            Console.WriteLine(" And no repeated digits are there in the code.");
+            Console.WriteLine(" And no repeated digits are there in the code (0 - 9).");
             Console.WriteLine("\n More: ");
             Console.WriteLine(" * There are 3 levels for the game: \n  1. Easy - 4 digit code\n  2. Medium - 5 digit code\n  3. Hard - 6 digit code");
             Console.WriteLine(" * Player can attempt to crack the code 8 times.");
@@ -126,7 +125,7 @@ namespace SecCode
             for(i = 0; i < lvl; i++)
             {
                 label:
-                num = digGen.Next(1, 10);
+                num = digGen.Next(0, 10);
                 if(!code.Contains(num))
                     code.Add(num);
                 else
@@ -136,11 +135,42 @@ namespace SecCode
             //Console.Writeline();
             return code;
         }
+
+        static void PrintCode(List<int> code)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\n The Secret Code is ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Blue;
+            foreach(int digit in code)
+                Console.Write(digit);
+            Console.ResetColor();
+            Console.Write("\n\n");
+        }
         
         static List<int> PlayerInput(int lvl)
         {
-            Console.Write("\n Enter the code: ");
+            char[] digit = new char[10] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+            input:
+            Console.Write("\n Enter the " + lvl + " digit code: ");
             string input = Convert.ToString(Console.ReadLine());
+            int k;
+            for(int i = 0; i < input.Length; i++)
+            {
+                k = 0;
+                foreach(char x in digit)
+                {
+                    if(input[i] == x)
+                        k++;
+                }
+                if(k == 0)
+                {
+                    Console.WriteLine(" Oops!.. Enter a whole number code ;)");
+                    goto input;
+                }
+            }
+
             var _input = input.Select(digit => int.Parse(digit.ToString()));
             List<int> inp = new List<int>();
             foreach(var obj in _input)
@@ -202,16 +232,16 @@ namespace SecCode
                             for(int i = 0; i < lvl; i++)
                                 Console.Write(" ");
                         else
-                            Checkx1();
+                            Checkx1(x[1]);
                         break;
                 case 1: Console.Write(" 0");
-                        Checkx1();
+                        Checkx1(x[1]);
                         break;
                 case 2: Console.Write(" 00");
-                        Checkx1();
+                        Checkx1(x[1]);
                         break;
                 case 3: Console.Write(" 000");
-                        Checkx1();
+                        Checkx1(x[1]);
                         break;
                 case 4: Console.Write(" 0000");
                         if(lvl == 4)
@@ -221,7 +251,7 @@ namespace SecCode
                         }
                         else
                         {
-                            Checkx1();
+                            Checkx1(x[1]);
                             break;
                         }
                 case 5: Console.Write(" 00000");
@@ -232,7 +262,7 @@ namespace SecCode
                         }
                         else
                         {
-                            Checkx1();
+                            Checkx1(x[1]);
                             break;
                         }
                 case 6: Console.Write(" 000000");
@@ -243,46 +273,45 @@ namespace SecCode
                         }
                         else
                         {
-                            Checkx1();
+                            Checkx1(x[1]);
                             break;
                         }
                 default: Console.ForegroundColor = ConsoleColor.Red;
                          Console.Write(" Error!");
                          break;
             }
+        }
 
-            void Checkx1()
+        static void Checkx1(int x1)
+        {
+            switch(x1)
             {
-                switch(x[1])
-                {
-                    case 0: Console.Write(" ");
-                            break;
-                    case 1: Console.Write("O ");
-                            break;
-                    case 2: Console.Write("OO ");
-                            break;
-                    case 3: Console.Write("OOO ");
-                            break;
-                    case 4: Console.Write("OOOO ");
-                            break;
-                    case 5: Console.Write("OOOOO ");
-                            break;
-                    case 6: Console.Write("OOOOOO ");
-                            break;
-                    default: Console.ForegroundColor = ConsoleColor.Red;
-                             Console.Write(" Error!");
-                             break;
-                }
+                case 0: Console.Write(" ");
+                        break;
+                case 1: Console.Write("O ");
+                        break;
+                case 2: Console.Write("OO ");
+                        break;
+                case 3: Console.Write("OOO ");
+                        break;
+                case 4: Console.Write("OOOO ");
+                        break;
+                case 5: Console.Write("OOOOO ");
+                        break;
+                case 6: Console.Write("OOOOOO ");
+                        break;
+                default: Console.ForegroundColor = ConsoleColor.Red;
+                         Console.Write(" Error!");
+                         break;
             }
+        }
 
-            void Won()
+        static void Won()
             {
                 Console.Write(" ");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write("\n Yeyy!.. You Won!\n CODE DECRYPTED!\n");
             }
-        }
-
     }
 }

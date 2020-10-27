@@ -109,10 +109,10 @@ namespace SecCode
             Console.WriteLine(" Attempts are limited for each of the three levels of the game.");
             Console.WriteLine(" And no repeated digits are there in the code (0 - 9).");
             Console.WriteLine("\n More: ");
-            Console.WriteLine(" * There are 3 levels for the game: \n  1. Easy - 4 digit code\n  2. Medium - 5 digit code\n  3. Hard - 6 digit code");
-            Console.WriteLine(" * Player can attempt to crack the code 8 times.");
-            Console.WriteLine(" * Guess the code digit by digit. After entering your code, the Game-Machine prints \n    O - White Circle: O means that  of the digits entered is present in the code, but not in the correct position.\n    0 - Black Circle: 0 means that  of the digits entered is present in the code and is in the correct position.");
-            Console.WriteLine("    For eg, Let the Code be '4836' and let your entry is '1234', then the Game-Machine generates \"0O\"\n     0 represents the digit 3 which is present and also in correct position in the code.\n     O represents the digit 4 which is present in the code, but not in the correct position.");
+            Console.WriteLine(" - There are 3 levels for the game: \n  1. Easy - 4 digit code\n  2. Medium - 5 digit code\n  3. Hard - 6 digit code");
+            Console.WriteLine(" - Player can attempt to crack the code 8 times.");
+            Console.WriteLine(" - Guess the code digit by digit. After entering your code, the Game-Machine prints \n    C - Arc (Incomplete Circle): C means that  of the digits entered is present in the code, but not in the correct position.\n    O - Circle (Complete Circle): O means that  of the digits entered is present in the code and is in the correct position.");
+            Console.WriteLine("    For eg, Let the Code be '4836' and let your entry is '1234', then the Game-Machine generates \"OC\"\n     O represents the digit 3 which is present and also in correct position in the code.\n     C represents the digit 4 which is present in the code, but not in the correct position.");
             Console.WriteLine("\n ThAt's All About THE GAME!..");
             Console.WriteLine("\n Press any key to play the game..");
         }
@@ -138,10 +138,10 @@ namespace SecCode
 
         static void PrintCode(List<int> code)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("\n The Secret Code is ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.Write("\n The Secret Code is ");
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
             foreach(int digit in code)
                 Console.Write(digit);
             Console.ResetColor();
@@ -234,16 +234,16 @@ namespace SecCode
                         else
                             Checkx1(x[1]);
                         break;
-                case 1: Console.Write(" 0");
+                case 1: Console.Write(" O");
                         Checkx1(x[1]);
                         break;
-                case 2: Console.Write(" 00");
+                case 2: Console.Write(" OO");
                         Checkx1(x[1]);
                         break;
-                case 3: Console.Write(" 000");
+                case 3: Console.Write(" OOO");
                         Checkx1(x[1]);
                         break;
-                case 4: Console.Write(" 0000");
+                case 4: Console.Write(" OOOO");
                         if(lvl == 4)
                         {
                             Won();
@@ -254,7 +254,7 @@ namespace SecCode
                             Checkx1(x[1]);
                             break;
                         }
-                case 5: Console.Write(" 00000");
+                case 5: Console.Write(" OOOOO");
                         if(lvl == 5)
                         {
                             Won();
@@ -265,7 +265,7 @@ namespace SecCode
                             Checkx1(x[1]);
                             break;
                         }
-                case 6: Console.Write(" 000000");
+                case 6: Console.Write(" OOOOOO");
                         if(lvl == 6)
                         {
                             Won();
@@ -288,17 +288,17 @@ namespace SecCode
             {
                 case 0: Console.Write(" ");
                         break;
-                case 1: Console.Write("O ");
+                case 1: Console.Write("C ");
                         break;
-                case 2: Console.Write("OO ");
+                case 2: Console.Write("CC ");
                         break;
-                case 3: Console.Write("OOO ");
+                case 3: Console.Write("CCC ");
                         break;
-                case 4: Console.Write("OOOO ");
+                case 4: Console.Write("CCCC ");
                         break;
-                case 5: Console.Write("OOOOO ");
+                case 5: Console.Write("CCCCC ");
                         break;
-                case 6: Console.Write("OOOOOO ");
+                case 6: Console.Write("CCCCCC ");
                         break;
                 default: Console.ForegroundColor = ConsoleColor.Red;
                          Console.Write(" Error!");

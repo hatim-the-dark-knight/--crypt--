@@ -92,20 +92,24 @@ namespace SecCode
 
         static void Title()
         {
-            //Console.SetWindowSize(126, 30);
+            int width = 96, height = 30;
+            Console.SetWindowSize(width, height);
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
 
             string title;
             title = "CRYPT!";
             Console.SetCursorPosition(Console.WindowWidth/2 - title.Length/2, 1);
             Console.WriteLine(title);
-            Console.SetCursorPosition(Console.WindowWidth/2 - 35, 3);
-            Console.WriteLine("______________________________________________________________________");
+            Console.SetCursorPosition(Console.WindowWidth/2 - 47, 2);
+            Console.WriteLine("______________________________________________________________________________________________");
+            Console.SetCursorPosition(Console.WindowWidth/2 - 47, 3);
+            Console.WriteLine("______________________________________________________________________________________________");
         }
 
         static void AllAbout()
         {
             Console.WriteLine("\n About CRYPT! : ");
-            Console.WriteLine(" A logical game where the player has to crack the code that is generated, by guessing the code digit by digit as per the output of the Game-Machine, for each attempt.");
+            Console.WriteLine(" A simple logic game, where the player has to crack the code, that is generated, by guessing the code digit by digit as per the output of the Game-Machine, for each attempt.");
             Console.WriteLine(" Attempts are limited for each of the three levels of the game.");
             Console.WriteLine(" And no repeated digits are there in the code (0 - 9).");
             Console.WriteLine("\n More: ");
@@ -113,7 +117,7 @@ namespace SecCode
             Console.WriteLine(" - Player can attempt to crack the code 8 times.");
             Console.WriteLine(" - Guess the code digit by digit. After entering your code, the Game-Machine prints \n    C - Arc (Incomplete Circle): C means that  of the digits entered is present in the code, but not in the correct position.\n    O - Circle (Complete Circle): O means that  of the digits entered is present in the code and is in the correct position.");
             Console.WriteLine("    For eg, Let the Code be '4836' and let your entry is '1234', then the Game-Machine generates \"OC\"\n     O represents the digit 3 which is present and also in correct position in the code.\n     C represents the digit 4 which is present in the code, but not in the correct position.");
-            Console.WriteLine("\n ThAt's All About THE GAME!..");
+            Console.WriteLine("\n ZAt's All About THE GAME!..");
             Console.WriteLine("\n Press any key to play the game..");
         }
 

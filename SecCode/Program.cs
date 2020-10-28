@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace SecCode
 {
@@ -72,6 +73,8 @@ namespace SecCode
             
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
+
+            here:
             Console.Write("\n Do you want to play once more (yes(y)/no(n)) ? ");
             string again = Console.ReadLine();
             again = again.ToLower();
@@ -82,28 +85,27 @@ namespace SecCode
                 Title();
                 goto again;
             }
-            else
+            else if(again == "no"|| again == "n")
             {
                 Console.WriteLine("\n Press any key to exit..");
                 Console.ReadKey();
                 System.Environment.Exit(0);
             }
+            else
+                goto here;
         }
 
         static void Title()
         {
-            int width = 96, height = 30;
-            Console.SetWindowSize(width, height);
-            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
-
-            string title;
+            string title, line = "";
+            var _line = new StringBuilder();
             title = "CRYPT!";
-            Console.SetCursorPosition(Console.WindowWidth/2 - title.Length/2, 1);
-            Console.WriteLine(title);
-            Console.SetCursorPosition(Console.WindowWidth/2 - 47, 2);
-            Console.WriteLine("______________________________________________________________________________________________");
-            Console.SetCursorPosition(Console.WindowWidth/2 - 47, 3);
-            Console.WriteLine("______________________________________________________________________________________________");
+            for(int i = 0; i < (Console.WindowWidth - 2); i++)
+                _line.Append("_");
+            line = _line.ToString();
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth/2) + (title.Length/2)) + "}", title));
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth/2) + (line.Length/2)) + "}", line));
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth/2) + (line.Length/2)) + "}", line));
         }
 
         static void AllAbout()

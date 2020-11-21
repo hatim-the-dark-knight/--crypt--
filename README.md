@@ -11,5 +11,5 @@ Guess the code digit by digit. After entering your code, the Game-Machine prints
    O represents the digit 3 which is present and also in correct position in the code.  
    C represents the digit 4 which is present in the code, but not in the correct position.*** 
 ***
-***[Click here to play the game in PC](https://crypt.hatimtdk.repl.run)***
-***
+<!--***[Click here to play the game in PC](https://crypt.hatimtdk.repl.run)***
+***-->
